@@ -26,31 +26,27 @@ const eqArrays = function(arr1, arr2) {
 };
 
 const eqObjects = function(object1, object2) {
-  let object1keys = Object.keys(object1);
-  let object2keys = Object.keys(object2);
-  let result = true;
+  const object1keys = Object.keys(object1);
+  const object2keys = Object.keys(object2);
+
   if (object1keys.length !== object2keys.length) {
-    result = false;
+    return false;
   }
-  for (let keys of object1keys) {
-    let object1Value = object1[keys];
-    let object2Value = object2[keys];
+
+  for (const key of object1keys) {
+    const object1Value = object1[key];
+    const object2Value = object2[key];
+
     if (Array.isArray(object1Value) && Array.isArray(object2Value)) {
       if (!eqArrays(object1Value, object2Value)) {
-        result = false;
-        break;
+        return false;
       }
-    } else if (!Array.isArray(object1Value) && !Array.isArray(object2Value)) {
-      if (object1Value !== object2Value) {
-        result = false;
-        break;
-      }
-    } else {
-      result = false;
-      break;
+    } else if (object1Value !== object2Value) {
+      return false;
     }
   }
-  return result;
+
+  return true;
 };
 
 const assertObjectEquals = function(actual, expected) {
@@ -62,4 +58,4 @@ const assertObjectEquals = function(actual, expected) {
   }
 };
 
-assertObjectEquals({arr1 : [1,3,2]}, {arr1 : [1,2,3]});
+assertObjectEquals({arr1 : [1,3,2], two : 2}, {arr1 : [1,3,2], two : 2});
