@@ -1,6 +1,3 @@
-// assertArraysEqual((middle([1,2,3,4,5,6])), [3,4]);
-
-
 const middle = require("../middle");
 const assert = require('chai').assert;
 
