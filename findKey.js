@@ -17,7 +17,7 @@ const findKey = function(object, callback) {
   }
   //If no key is found, return undefined
   return undefined;
-}
+};
 
 // findKey({
 //   "Blue Hill": { stars: 1 },
